@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+group = 'one.microproject.webserver'
+version = '1.0.0'
+mainClassName = 'one.microproject.webserver.Main'
+applicationDefaultJvmArgs = ['-Xms32m', '-Xmx32m', '-XX:MaxMetaspaceSize=32m']
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:2.0.3'
+    implementation 'org.slf4j:slf4j-simple:2.0.3'
+    implementation 'io.undertow:undertow-core:2.3.0.Final'
+    implementation 'io.undertow:undertow-websockets-jsr:2.3.0.Final'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.14.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.14.0'
+
+    testImplementation 'org.testng:testng:7.6.1'
+}
+
+test {
+    // enable TestNG support (default is JUnit)
+    useTestNG()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}

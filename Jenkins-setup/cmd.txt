@@ -1,0 +1,14 @@
+Login:
+    Question Mark > Command Line Tools > Copy login command
+
+https://docs.openshift.com/container-platform/3.11/using_images/other_images/jenkins.html
+
+CMD:
+oc new-app -e JENKINS_PASSWORD=<password> openshift/jenkins-2-centos7
+
+Create Route
+Modify YAML:
+    (under port)
+    tls:
+        termination: edge
+        insecureEdgeTerminationPolicy: Redirect
